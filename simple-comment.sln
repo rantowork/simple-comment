@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33829.357
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simple-comment-api", "simple-comment-api\simple-comment-api.csproj", "{A504E0B6-72BF-4432-8734-5592181902EA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A504E0B6-72BF-4432-8734-5592181902EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A504E0B6-72BF-4432-8734-5592181902EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A504E0B6-72BF-4432-8734-5592181902EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A504E0B6-72BF-4432-8734-5592181902EA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7970B191-9CE4-49C7-9FF0-BE0C02C40FBC}
+	EndGlobalSection
+EndGlobal
