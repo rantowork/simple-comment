@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using simple_comment_api.Data.Contexts;
 using simple_comment_api.Models;
 
 namespace simple_comment_api.Controllers
@@ -8,21 +10,22 @@ namespace simple_comment_api.Controllers
     [ApiController]
     public class CommentController : ControllerBase
     {
+        private readonly CommentContext _commentContext;
+
+        public CommentController(CommentContext context) 
+        { 
+            _commentContext = context;
+        }
+
         /// <summary>
         /// API endpoint for getting all comments from the database.
         /// </summary>
         /// <returns>A collection of comments.</returns>
         [HttpGet]
         [Route("comments")]
-        public List<Comment> GetAllComments()
+        public async Task<List<Comment>> GetAllComments()
         {
-            var comments = new List<Comment>
-            {
-                new Comment { Id = 1, CommentText = "This is a brand new comment!", Email = "tim@milyli.com", User = "Tim Randall" },
-                new Comment { Id = 2, CommentText = "This is the second comment.", Email = "quinn@milyli.com", User = "Quinn Palmer" }
-            };
-
-            return comments;
+            return await _commentContext.Comments.ToListAsync();
         }
 
         /// <summary>
@@ -32,21 +35,35 @@ namespace simple_comment_api.Controllers
         /// <returns>200 Response with the requested comment in the body of the response.</returns>
         [HttpGet]
         [Route("comments/{id}")]
-        public IActionResult GetComment(int id)
+        public async Task<IActionResult> GetComment(int id)
         {
-            var comments = new List<Comment>
-            {
-                new Comment { Id = 1, CommentText = "This is a brand new comment!", Email = "tim@milyli.com", User = "Tim Randall" },
-                new Comment { Id = 2, CommentText = "This is the second comment.", Email = "quinn@milyli.com", User = "Quinn Palmer" }
-            };
-
-            var comment = comments.FirstOrDefault(comment => comment.Id == id);
+            var comment = await _commentContext.Comments.FindAsync(id);
 
             if (comment != null)
             {
                 return Ok(comment);
             }
             else { return BadRequest(); }
+        }
+
+        [HttpPost]
+        [Route("comments/create")]
+        public async Task<IActionResult> CreateComment(Comment comment)
+        {
+            if (comment == null)
+            {
+                return BadRequest();
+            }
+
+            if (String.IsNullOrEmpty(comment.CommentText))
+            {
+                return BadRequest("Comment required!");
+            }
+
+            var result = await _commentContext.Comments.AddAsync(comment);
+            await _commentContext.SaveChangesAsync();
+
+            return Ok(result);
         }
     }
 }
