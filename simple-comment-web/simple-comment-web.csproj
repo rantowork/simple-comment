@@ -11,4 +11,8 @@
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\simple-comment-core\simple-comment-core.csproj" />
+  </ItemGroup>
+
 </Project>

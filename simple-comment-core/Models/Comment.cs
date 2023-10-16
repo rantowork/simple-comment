@@ -1,6 +1,6 @@
 ﻿using Swashbuckle.AspNetCore.Annotations;
 
-namespace simple_comment_api.Models
+namespace simple_comment_core.Models
 {
     /// <summary>
     /// Model that represents a comment left by a user on the website.

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using simple_comment_api.Data.Contexts;
-using simple_comment_api.Models;
+using simple_comment_core.Models;
 using System.Net;
 
 namespace simple_comment_api.Controllers

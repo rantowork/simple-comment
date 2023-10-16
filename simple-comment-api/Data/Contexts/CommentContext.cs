@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using simple_comment_api.Models;
+using simple_comment_core.Models;
 
 namespace simple_comment_api.Data.Contexts
 {
