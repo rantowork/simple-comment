@@ -1,3 +1,22 @@
-﻿<div>
-    Hello!
+﻿@model CommentsViewModel;
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Comment By</th>
+                <th>Comment</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var comment in Model.Comments)
+            {
+                var mailTo = $"mailto:{comment.Email}";
+                <tr>
+                    <td>@comment.Id - @comment.User (<a href="@mailTo">@comment.Email)</a></td>
+                    <td>@comment.CommentText</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
